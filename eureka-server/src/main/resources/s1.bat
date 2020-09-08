@@ -1,5 +1,5 @@
-@Title=MVN SRV..
+@Title=MVN eureka..
 e:
-cd E:\codes_svn\springcloud\eureka-server
+cd E:\mycodes\SpringCloud-Learning\eureka-server
 call mvn -DskipTests=true clean install
 pause
