@@ -14,20 +14,20 @@ import reactor.core.publisher.Mono;
  */
 @Slf4j
 public class AccessFilter implements GlobalFilter, Ordered {
- 
-    @Override
-    public Mono<Void> filter(ServerWebExchange exchange, GatewayFilterChain chain) {
-        String token = exchange.getRequest().getQueryParams().getFirst("accessToken");
-        if (token == null || token.isEmpty()) {
-            log.info( "access token is empty" );
-            exchange.getResponse().setStatusCode(HttpStatus.UNAUTHORIZED);
-            return exchange.getResponse().setComplete();
-        }
-        return chain.filter(exchange);
-    }
- 
-    @Override
-    public int getOrder() {
-        return -100;
-    }
+
+	@Override
+	public Mono<Void> filter(ServerWebExchange exchange, GatewayFilterChain chain) {
+		String token = exchange.getRequest().getQueryParams().getFirst("accessToken");
+		if (token == null || token.isEmpty()) {
+			log.info("access token is empty");
+			exchange.getResponse().setStatusCode(HttpStatus.UNAUTHORIZED);
+			return exchange.getResponse().setComplete();
+		}
+		return chain.filter(exchange);
+	}
+
+	@Override
+	public int getOrder() {
+		return -100;
+	}
 }
